@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>WiFi Analyzer</title>
+</head>
+<body>
+    <h1>Welcome to the WiFi Analyzer</h1>
+    <p>Click below to check WiFi Signal Strength:</p>
+    <button onclick="fetchSignal()">Check Signal</button>
+    <p id="signal"></p>
+
+    <script>
+        function fetchSignal() {
+            fetch('/api/wifi')
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("signal").innerText = 
+                        "Strength: " + data.signal_strength + " - " + data.classification;
+                });
+        }
+    </script>
+</body>
+</html>
